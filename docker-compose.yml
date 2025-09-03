@@ -1,0 +1,55 @@
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: DonacionesContainer
+    ports:
+      - "5000:80"
+    environment:
+      APP_NAME: Laravel
+      APP_ENV: local
+      APP_KEY: base64:FBKmi1USVg97cS6M6+MVQHSg8FkoqrQOeomadQhuYZQ=
+      APP_DEBUG: "true"
+      APP_URL: http://localhost:5000
+
+      DB_CONNECTION: pgsql
+      DB_HOST: pbd_pg
+      DB_PORT: 5432
+      DB_DATABASE: donaciones
+      DB_USERNAME: postgres
+      DB_PASSWORD: admin
+
+      SESSION_DRIVER: database
+      SESSION_LIFETIME: 120
+    depends_on:
+      - pbd_pg
+    volumes:
+      - .:/var/www/html
+    networks:
+      - net_test
+    command: >
+      sh -c "php artisan migrate --force && apache2-foreground"
+
+  pbd_pg:
+    image: postgres:15
+    container_name: bdtest
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: donaciones
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgcoso:/var/lib/postgresql/data
+    networks:
+      - net_test
+
+volumes:
+  pgcoso:
+
+networks:
+  net_test:
+    driver: bridge
