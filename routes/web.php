@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DonanteController;
+use App\Http\Controllers\PuntoDonacionController;
+
 
 Route::redirect('/', '/dashboard');
 
@@ -19,6 +22,9 @@ Route::middleware(['auth','verified'])->group(function () {
 
     // (Opcional) CRUD de usuarios
     Route::resource('users', UserController::class);
+    Route::resource('donantes', DonanteController::class);
+    Route::resource('puntosdonacion', PuntoDonacionController::class);
+
 });
 
 require __DIR__.'/auth.php';
