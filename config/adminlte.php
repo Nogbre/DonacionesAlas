@@ -213,6 +213,22 @@ return [
             'route' => 'users.index',
             'icon'  => 'fas fa-users',
         ],
+        [
+            'text'  => 'Donantes',
+            'route' => 'donantes.index',
+            'icon'  => 'fas fa-hand-holding-heart',
+        ],
+        // 👉 Nuevo ítem: Campañas
+        [
+            'text'  => 'Campañas',
+            'route' => 'campaigns.index',
+            'icon'  => 'fas fa-bullhorn',
+        ],
+        [
+            'text'  => 'Puntos de Donación',
+            'route' => 'puntosdonacion.index',
+            'icon'  => 'fas fa-map-marker-alt',
+        ],
     ],
 
     /*
