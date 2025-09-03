@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CampaignController;
+
 
 Route::redirect('/', '/dashboard');
 
@@ -19,6 +21,9 @@ Route::middleware(['auth','verified'])->group(function () {
 
     // (Opcional) CRUD de usuarios
     Route::resource('users', UserController::class);
+
+    Route::resource('campaigns', CampaignController::class);
+
 });
 
 require __DIR__.'/auth.php';

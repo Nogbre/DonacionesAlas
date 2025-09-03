@@ -213,6 +213,12 @@ return [
             'route' => 'users.index',
             'icon'  => 'fas fa-users',
         ],
+        // 👉 Nuevo ítem: Campañas
+        [
+            'text'  => 'Campañas',
+            'route' => 'campaigns.index',
+            'icon'  => 'fas fa-bullhorn',
+        ],
     ],
 
     /*
