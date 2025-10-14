@@ -199,7 +199,7 @@ return [
         ['header' => 'Navegación'],
 
         [
-            'text'  => 'Inicio',
+            'text'  => 'Estadísticas',
             'route' => 'dashboard',
             'icon'  => 'fas fa-home',
         ],
@@ -217,6 +217,27 @@ return [
             'text'  => 'Donantes',
             'route' => 'donantes.index',
             'icon'  => 'fas fa-hand-holding-heart',
+        ],
+        // Nuevas secciones añadidas al sidebar
+        [
+            'text'  => 'Donaciones',
+            'route' => 'donaciones',
+            'icon'  => 'fas fa-donate',
+        ],
+        [
+            'text'  => 'Inventario',
+            'route' => 'inventario',
+            'icon'  => 'fas fa-boxes',
+        ],
+        [
+            'text'  => 'Solicitudes',
+            'route' => 'pedidos',
+            'icon'  => 'fas fa-clipboard-list',
+        ],
+        [
+            'text'  => 'Cajas / Paquetes',
+            'route' => 'paquetes',
+            'icon'  => 'fas fa-box-open',
         ],
         // 👉 Nuevo ítem: Campañas
         [
@@ -288,7 +309,7 @@ return [
             ],
         ],
         'Chartjs' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
