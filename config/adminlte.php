@@ -198,16 +198,25 @@ return [
         // Sidebar items (izquierda)
         ['header' => 'Navegación'],
 
+        // Core navigation ordered like the React sidebar
         [
             'text'  => 'Estadísticas',
             'route' => 'dashboard',
             'icon'  => 'fas fa-home',
         ],
         [
-            'text'  => 'Perfil',
-            'route' => 'profile.show',
-            'icon'  => 'fas fa-user',
+            'text'  => 'Inventario',
+            'route' => 'inventario',
+            'icon'  => 'fas fa-boxes',
         ],
+
+        // Single Agregar item (stub page)
+        [
+            'text'  => 'Agregar',
+            'route' => 'agregar.index',
+            'icon'  => 'fas fa-plus',
+        ],
+
         [
             'text'  => 'Usuarios',
             'route' => 'users.index',
@@ -218,16 +227,15 @@ return [
             'route' => 'donantes.index',
             'icon'  => 'fas fa-hand-holding-heart',
         ],
-        // Nuevas secciones añadidas al sidebar
         [
-            'text'  => 'Donaciones',
-            'route' => 'donaciones',
-            'icon'  => 'fas fa-donate',
+            'text'  => 'Campañas',
+            'route' => 'campaigns.index',
+            'icon'  => 'fas fa-bullhorn',
         ],
         [
-            'text'  => 'Inventario',
-            'route' => 'inventario',
-            'icon'  => 'fas fa-boxes',
+            'text'  => 'Almacenes',
+            'route' => 'almacenes.index',
+            'icon'  => 'fas fa-warehouse',
         ],
         [
             'text'  => 'Solicitudes',
@@ -235,20 +243,9 @@ return [
             'icon'  => 'fas fa-clipboard-list',
         ],
         [
-            'text'  => 'Cajas / Paquetes',
-            'route' => 'paquetes',
-            'icon'  => 'fas fa-box-open',
-        ],
-        // 👉 Nuevo ítem: Campañas
-        [
-            'text'  => 'Campañas',
-            'route' => 'campaigns.index',
-            'icon'  => 'fas fa-bullhorn',
-        ],
-        [
-            'text'  => 'Puntos de Donación',
-            'route' => 'puntosdonacion.index',
-            'icon'  => 'fas fa-map-marker-alt',
+            'text'  => 'Salidas',
+            'route' => 'salidas.index',
+            'icon'  => 'fas fa-truck',
         ],
     ],
 
@@ -274,7 +271,7 @@ return [
     */
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
