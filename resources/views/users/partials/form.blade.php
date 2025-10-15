@@ -1,4 +1,4 @@
-<div class="mb-3">
+﻿<div class="mb-3">
     <label>Nombre</label>
     <input type="text" name="name" value="{{ old('name',$user->name ?? '') }}"
            class="form-control @error('name') is-invalid @enderror">

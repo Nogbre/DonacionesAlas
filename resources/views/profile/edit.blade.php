@@ -27,14 +27,14 @@
 
                         <div class="mb-3">
                             <label>Nombre</label>
-                            <input type="text" name="name" value="{{ old('name', auth()->user()->name) }}"
+                            <input type="text" name="name" value="{{ old('name', 'Usuario Demo') }}"
                                    class="form-control @error('name') is-invalid @enderror" autocomplete="name">
                             @error('name') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
 
                         <div class="mb-3">
                             <label>Email</label>
-                            <input type="email" name="email" value="{{ old('email', auth()->user()->email) }}"
+                            <input type="email" name="email" value="{{ old('email', 'demo@example.com') }}"
                                    class="form-control @error('email') is-invalid @enderror" autocomplete="email">
                             @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
