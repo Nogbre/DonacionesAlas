@@ -15,15 +15,9 @@ class ProfileController extends Controller
      * Display the user's profile form.
      */
     public function edit(Request $request): View
-    {
-        // Since authentication is disabled, return a default user or handle gracefully
-        $user = $request->user() ?? new \App\Models\User([
-            'name' => 'Usuario Demo',
-            'email' => 'demo@example.com'
-        ]);
-        
+    {   
         return view('profile.edit', [
-            'user' => $user,
+            'user' => $request->user(),
         ]);
     }
 
@@ -32,9 +26,15 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        // Since authentication is disabled, this functionality may not work properly
-        // You might want to redirect to dashboard or show an error message
-        return Redirect::route('dashboard')->with('status', 'profile-update-disabled');
+        $request->user()->fill($request->validated());
+
+        if ($request->user()->isDirty('email')) {
+            $request->user()->email_verified_at = null;
+        }
+
+        $request->user()->save();
+
+        return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
     /**
@@ -42,7 +42,19 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        // Since authentication is disabled, this functionality is not available
-        return Redirect::route('dashboard')->with('status', 'account-deletion-disabled');
+        $request->validateWithBag('userDeletion', [
+            'password' => ['required', 'current_password'],
+        ]);
+
+        $user = $request->user();
+
+        Auth::logout();
+
+        $user->delete();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return Redirect::to('/');
     }
 }
